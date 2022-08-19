@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function NewTaskForm({ categories, onTaskFormSubmit }) {
   const [textInput, setTextInput] = useState("")
   const [categoryInput, setCategoryInput] = useState("Code")
   const renderOptions = () => {
     return categories.map(category => {
-      return <option>{category}</option>
+      return <option key={uuidv4()}>{category}</option>
     }) 
   }
 
