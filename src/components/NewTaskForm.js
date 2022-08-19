@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ categories }) {
+function NewTaskForm({ categories, onTaskFormSubmit }) {
   const [textInput, setTextInput] = useState("")
   const [categoryInput, setCategoryInput] = useState("Code")
   const renderOptions = () => {
@@ -18,7 +18,7 @@ function NewTaskForm({ categories }) {
   }
 
   return (
-    <form className="new-task-form">
+    <form onSubmit={(e) => onTaskFormSubmit(e, textInput, categoryInput)} className="new-task-form">
       <label>
         Details
         <input onChange={handleChange} type="text" name="text" value={textInput} />

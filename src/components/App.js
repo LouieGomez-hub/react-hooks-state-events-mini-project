@@ -16,6 +16,11 @@ function App() {
     setTasks(filteredTasks)
   }
 
+  const onTaskFormSubmit = (event, text, category) => {
+    event.preventDefault()
+    setTasks([...tasks, {text: text, category: category}])
+  }
+
   const handleClick = (e) => {
     setFilter(e.target.innerText)
   }
@@ -34,7 +39,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter handleClick={handleClick} categories={CATEGORIES} />
-      <NewTaskForm categories={CATEGORIES.filter(cat => cat !=="All")} />
+      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit} categories={CATEGORIES.filter(cat => cat !=="All")} />
       <TaskList tasks={displayTasks()} handleDelete={handleDelete} />
     </div>
   );
