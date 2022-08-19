@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter categories={CATEGORIES} />
       <NewTaskForm />
       <TaskList tasks={tasks} handleDelete={handleDelete} />
     </div>
