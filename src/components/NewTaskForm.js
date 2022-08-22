@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ categories, onTaskFormSubmit }) {
-  const [text, setText] = useState("")
-  const [category, setCategory] = useState("Code")
+function NewTaskForm({ onTaskFormSubmit, categories }) {
+  const [text, setText] = useState("");
+  const [category, setCategory] = useState("Code");
 
   function handleSubmit(e) {
     e.preventDefault();
-    onTaskFormSubmit({ text, category })
-    setText("")
-    setCategory("Code")
+    onTaskFormSubmit({ text, category });
+    setText("");
+    setCategory("Code");
   }
 
   return (
-    <form onSubmit={handleSubmit} className="new-task-form">
+    <form className="new-task-form" onSubmit={handleSubmit}>
       <label>
         Details
-        <input 
-          onChange={(e) => setText(e.target.value)}
+        <input
           type="text"
-          value={text} 
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
       </label>
       <label>
         Category
         <select 
-          onChange={(e) => setText(e.target.value)} 
-          value={category}>
+          value={category} 
+          onChange={(e) => setCategory(e.target.value)}>
           {categories.map((cat) => (
             <option key={cat}>{cat}</option>
           ))}
