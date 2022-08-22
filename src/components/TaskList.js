@@ -1,18 +1,17 @@
 import React from "react";
 import Task from "./Task";
-import { v4 as uuidv4 } from "uuid";
 
-function TaskList({ tasks, handleDelete }) {
-  const displayTasks = () => {
-    return tasks.map((task) => {
-      return <Task handleDelete={handleDelete} key={uuidv4()} task={task} />
-    })
-  }
-  return (
-    <div className="tasks">
-      {displayTasks()}
-    </div>
-  );
+function TaskList({ tasks, onDeleteTask }) {
+  const taskList = tasks.map((task) => (
+    <Task 
+      onDeleteTask={onDeleteTask} 
+      key={task.text} 
+      category={task.category}
+      text={task.text} 
+    />
+    ));
+
+  return <div className="tasks">{taskList}</div>
 }
 
 export default TaskList;
